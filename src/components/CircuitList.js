@@ -1,17 +1,17 @@
 import React from 'react';
-import DriverListItem from './DriverListItem';
+import CircuitListItem from './CircuitListItem';
 import { FlatList, StyleSheet } from 'react-native';
 
-const DriverList = props => {
-    const {driver, onPressItem} = props;
+const CircuitList = props => {
+    const {circuit, onPressItem} = props;
 
     return(
         <FlatList 
             style={styles.container}
-            data={driver}
+            data={circuit}
             renderItem={ ({item}) => (
-                <DriverListItem 
-                    driver={item}
+                <CircuitListItem 
+                    circuit={item}
                     onPressItem={onPressItem} 
                 />
             )}
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DriverList;
+export default CircuitList;

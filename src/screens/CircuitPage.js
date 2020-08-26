@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import DriverList from '../components/DriverList';
+import CircuitList from '../components/CircuitList';
 import axios from 'axios';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 
 type Props = {};
-export default class DriverPage extends Component<Props> {
+export default class CircuitPage extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            driver: [],
+            circuit: [],
             loading: false,
             error: false
         };
@@ -17,11 +17,12 @@ export default class DriverPage extends Component<Props> {
     componentDidMount() {
         this.setState({loading: true});
         axios
-        .get('https://randomuser.me/api/?nat=br&results=10')
+        .get('https://randomuser.me/api/?nat=br&results=20')
         .then(response => {
+            console.log(response.data);
             const {results} = response.data;
             this.setState({
-                driver: results,
+                circuit: results,
                 loading: false
             })
         })
@@ -34,8 +35,8 @@ export default class DriverPage extends Component<Props> {
     }
 
     renderList() {
-        const textElements = this.state.driver.map(driver => {
-            const {first} = driver.name;
+        const textElements = this.state.circuit.map(circuit => {
+            const {first} = circuit.name;
             return <Text key={first}>{first}</Text>
         });
         return textElements;
@@ -49,11 +50,11 @@ export default class DriverPage extends Component<Props> {
                     <ActivityIndicator size="large" color="#CECECE" />
                     :
                     this.state.error ?
-                    <Text style={styles.error}>ERRO AO CARREGAR A LISTA DE PILOTOS!</Text>
+                    <Text style={styles.error}>ERRO AO CARREGAR A LISTA DE CIRCUITOS!</Text>
                     :
-                    <DriverList
-                    driver={this.state.driver}
-                    onPressItem={(parameters) => this.props.navigation.navigate('DriverDetail', parameters)}
+                    <CircuitList
+                    circuit={this.state.circuit}
+                    onPressItem={(parameters) => this.props.navigation.navigate('CircuitDetail', parameters)}
                     />
                 }
             </View>

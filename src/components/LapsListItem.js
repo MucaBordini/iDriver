@@ -1,19 +1,16 @@
 import React from 'react';
 import { TouchableOpacity, View, Image, StyleSheet, Text } from 'react-native';
 
-const DriverListItem = props => {
-    const {driver, onPressItem} = props;
-    const {title, first, last} = driver.name;
-    const {thumbnail} = driver.picture;
+export default class LapsListItem extends React.Component {
 
-    return(
-        <TouchableOpacity onPress={() => {onPressItem({driver});}}>
+    render() {
+        <TouchableOpacity>
             <View style={styles.line}>
-                <Image source={{uri: thumbnail}} style={styles.avatar}/>
-                <Text style={styles.linetext}>{title + ' ' + first + ' ' + last}</Text>
+                <Text style={styles.linetext}>Circuito de Londrina</Text>
             </View>
         </TouchableOpacity>
-    )
+    }
+        
 }
 
 const styles = StyleSheet.create({
@@ -36,5 +33,3 @@ const styles = StyleSheet.create({
         borderRadius: 15
     }
 })
-
-export default DriverListItem;

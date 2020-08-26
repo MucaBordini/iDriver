@@ -2,20 +2,19 @@ import React from 'react';
 import Line from '../components/Line';
 import { View, StyleSheet, Image } from 'react-native';
 
-export default class DriverDetail extends React.Component  {
+export default class CircuitDetail extends React.Component  {
     render() {
-        const { driver } = this.props.navigation.state.params;
-        const picURL = driver.picture.large;
+        const { circuit } = this.props.navigation.state.params;
+        const picURL = circuit.picture.large;
 
         return(
             <View style={styles.container}>
                 <Image source={{ uri: picURL }} style={styles.avatar}/>
                 <View style={styles.detailContainer}>
-                    <Line label='Email: ' content={driver.email}/>
-                    <Line label='Cidade: ' content={driver.location.city}/>
-                    <Line label='Estado: ' content={driver.location.state}/>
-                    <Line label='Cel: ' content={driver.cell}/>
-                    <Line label='Nacionalidade: ' content={driver.nat}/>
+                    <Line label='Nome do circuito: ' content={circuit.email}/>
+                    <Line label='Cidade: ' content={circuit.location.city}/>
+                    <Line label='Estado: ' content={circuit.location.state}/>
+                    <Line label='Tamanho: ' content='5250m'/>
                 </View>
             </View>
         );
