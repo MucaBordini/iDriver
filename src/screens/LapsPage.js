@@ -17,11 +17,8 @@ export default class LapsPage extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                
-                    
-                    <Text style={styles.linetext}>AQUI DEVEM FICAR AS VOLTAS REGISTRADAS PELO USUÁRIO</Text>
-                    <LapsList/>
-                
+                <Text style={styles.linetext}>AQUI DEVEM FICAR AS VOLTAS REGISTRADAS PELO USUÁRIO</Text>
+                <LapsList/>
             </View>
         );
     }

@@ -1,22 +1,31 @@
-import { createDrawerNavigator, createStackNavigator, createAppContainer} from 'react-navigation';
-import DriverLicense from './src/screens/DriverLicense';
-import LapsPage from './src/screens/LapsPage';
-import CircuitPage from './src/screens/CircuitPage';
-import CircuitDetail from './src/screens/CircuitDetail';
+import { createDrawerNavigator, createAppContainer} from 'react-navigation';
+import StackLicense from './src/navigation/StackLicense';
+import StackLaps from './src/navigation/StackLaps';
+import StackCircuits from './src/navigation/StackCircuits';
+// import CircuitPage from './src/screens/CircuitPage';
+// import CircuitDetail from './src/screens/CircuitDetail';
 
 
 const DrawerNavigator = createDrawerNavigator({
   'Minhas Voltas': {
-    screen: LapsPage
+    screen: StackLaps
   },
   'Circuitos': {
-    screen: CircuitPage
+    screen: StackCircuits
   },
   'Carteira de iDriver': {
-    screen: DriverLicense
+    screen: StackLicense
   },
-  'CircuitDetail': {
-    screen: CircuitDetail,
+  // 'CircuitDetail': {
+  //   screen: CircuitDetail,
+  // }
+} , {
+  drawerBackgroundColor: '#E13232',
+  contentOptions: {
+    inactiveTintColor: '#fff',
+    activeTintColor: '#fff',
+    activeBackgroundColor: '#E5C4C4',
+
   }
 });
 // const StackNavigator = createStackNavigator({
