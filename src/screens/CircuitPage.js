@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CircuitList from '../components/CircuitList';
+import AddButton from '../components/AddButton';
 import axios from 'axios';
 import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
 
@@ -57,6 +58,13 @@ export default class CircuitPage extends Component<Props> {
                     onPressItem={(parameters) => this.props.navigation.navigate('CircuitDetail', parameters)}
                     />
                 }
+                {
+                    this.state.error || this.state.loading ?
+                    null
+                    :
+                    <AddButton name={'Registrar novo Circuito'} page={'CircuitRegister'} nav={(parameters) => this.props.navigation.navigate(parameters)}/>
+                }
+                
             </View>
         );
     }

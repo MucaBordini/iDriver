@@ -1,10 +1,14 @@
 import { createStackNavigator, createAppContainer} from 'react-navigation';
 import DriverLicense from '../screens/DriverLicense';
+import DriverEdit from '../screens/DriverEdit';
 
 const StackNavigator = createStackNavigator({
   'Carteira iDriver': {
     screen: DriverLicense
   },
+  'DriverEdit': {
+    screen: DriverEdit
+  }
 } , {
   defaultNavigationOptions: {
     title:  'iDriver',

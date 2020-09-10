@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import LicenseDetail from '../components/LicenseDetail';
-import axios from 'axios';
+import EditButton from '../components/EditButton';
 
 type Props = {};
 export default class DriverLicense extends Component<Props> {
@@ -17,7 +17,14 @@ export default class DriverLicense extends Component<Props> {
     render() {
         return(
             <View style={styles.container}>
-                <LicenseDetail />
+                <View>
+                    <LicenseDetail />
+                </View>
+                
+                <View>
+                    <EditButton name={'Editar carteira iDriver'} nav={(parameters) => this.props.navigation.navigate(parameters)} page={'DriverEdit'}/>
+                </View>
+                
             </View>
         )
     }

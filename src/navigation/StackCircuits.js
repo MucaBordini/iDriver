@@ -1,6 +1,8 @@
 import { createStackNavigator, createAppContainer} from 'react-navigation';
 import CircuitPage from '../screens/CircuitPage';
 import CircuitDetail from '../screens/CircuitDetail';
+import CircuitRegister from '../screens/CircuitRegister';
+import CircuitEdit from '../screens/CircuitEdit';
 
 const StackNavigator = createStackNavigator({
   'Circuitos': {
@@ -20,6 +22,12 @@ const StackNavigator = createStackNavigator({
         }
       })
     }
+  },
+  'CircuitRegister': {
+    screen: CircuitRegister
+  },
+  'CircuitEdit': {
+    screen: CircuitEdit
   }
 } , {
   defaultNavigationOptions: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Line from '../components/Line';
 import { View, StyleSheet, Image } from 'react-native';
+import EditButton from '../components/EditButton';
 
 export default class CircuitDetail extends React.Component  {
     render() {
@@ -16,6 +17,7 @@ export default class CircuitDetail extends React.Component  {
                     <Line label='Estado: ' content={circuit.location.state}/>
                     <Line label='Tamanho: ' content='5250m'/>
                 </View>
+                <EditButton name={'Editar circuito'} nav={(parameters) => this.props.navigation.navigate(parameters)} page={'CircuitEdit'}/>
             </View>
         );
     }
@@ -34,5 +36,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#E13232',
         marginTop: 20,
         elevation: 1,
+        marginBottom: 20
     }
 });

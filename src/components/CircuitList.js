@@ -6,17 +6,17 @@ const CircuitList = props => {
     const {circuit, onPressItem} = props;
 
     return(
-        <FlatList 
-            style={styles.container}
-            data={circuit}
-            renderItem={ ({item}) => (
-                <CircuitListItem 
-                    circuit={item}
-                    onPressItem={onPressItem} 
-                />
-            )}
-            keyExtractor={ (item, index) => item.name.first+index }
-        />
+            <FlatList 
+                style={styles.container}
+                data={circuit}
+                renderItem={ ({item}) => (
+                    <CircuitListItem 
+                        circuit={item}
+                        onPressItem={onPressItem} 
+                    />
+                )}
+                keyExtractor={ (item, index) => item.name.first+index }
+            />
     )
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LapsList from '../components/LapsList';
-import { Text, View, StyleSheet, ActivityIndicator } from 'react-native';
+import { Text, View, StyleSheet, ActivityIndicator,} from 'react-native';
+import AddButton from '../components/AddButton';
 
 type Props = {};
 export default class LapsPage extends Component<Props> {
@@ -19,6 +20,7 @@ export default class LapsPage extends Component<Props> {
             <View style={styles.container}>
                 <Text style={styles.linetext}>AQUI DEVEM FICAR AS VOLTAS REGISTRADAS PELO USUÁRIO</Text>
                 <LapsList/>
+                <AddButton name={"Registrar nova volta"} page={'LapRegister'} nav={(parameters) => this.props.navigation.navigate(parameters)}/>
             </View>
         );
     }

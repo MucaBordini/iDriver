@@ -1,72 +1,34 @@
-import { createDrawerNavigator, createAppContainer} from 'react-navigation';
-import StackLicense from './src/navigation/StackLicense';
-import StackLaps from './src/navigation/StackLaps';
-import StackCircuits from './src/navigation/StackCircuits';
-// import CircuitPage from './src/screens/CircuitPage';
-// import CircuitDetail from './src/screens/CircuitDetail';
+import { createStackNavigator, createAppContainer} from 'react-navigation';
+import Login from './src/screens/Login';
+import DrawerApp from './src/navigation/DrawerApp';
 
-
-const DrawerNavigator = createDrawerNavigator({
-  'Minhas Voltas': {
-    screen: StackLaps
+const StackNavigator = createStackNavigator({
+  'Login': {
+    screen: Login
   },
-  'Circuitos': {
-    screen: StackCircuits
-  },
-  'Carteira de iDriver': {
-    screen: StackLicense
-  },
-  // 'CircuitDetail': {
-  //   screen: CircuitDetail,
-  // }
+  'DrawerApp': {
+    screen: DrawerApp ,
+    navigationOptions: {
+      header: null
+    }
+  }
 } , {
-  drawerBackgroundColor: '#E13232',
-  contentOptions: {
-    inactiveTintColor: '#fff',
-    activeTintColor: '#fff',
-    activeBackgroundColor: '#E5C4C4',
-
+  defaultNavigationOptions: {
+    title:  'iDriver',
+    headerTitleStyle: {
+      color: 'white',
+      fontSize: 50,
+      flexGrow: 1,
+      textAlign: 'center'
+    },
+    headerStyle: {
+      backgroundColor: '#E13232',
+      borderBottomWidth: 1,
+      borderBottomColor: '#C5C5C5'
+    }
   }
 });
-// const StackNavigator = createStackNavigator({
-//   // 'Login': {
-//   //   screen: DriverLogin
-//   // },
-//   'Main': {
-//     screen: DriverPage
-//   },
-//   'DriverDetail': {
-//     screen: DriverDetail ,
-//     navigationOptions: ({navigation}) => {
-//       const driverName = navigation.state.params.driver.name.first;
-//       return({
-//         title: driverName,
-//         headerTitleStyle: {
-//           color: 'white',
-//           fontSize: 50,
-//           textAlign: 'center',
-//           flexGrow: 0.5,
-//         }
-//       })
-//     }
-//   }
-// } , {
-//   defaultNavigationOptions: {
-//     title:  'iDriver',
-//     headerTitleStyle: {
-//       color: 'white',
-//       fontSize: 50,
-//       flexGrow: 1,
-//       textAlign: 'center'
-//     },
-//     headerStyle: {
-//       backgroundColor: '#E13232',
-//       borderBottomWidth: 1,
-//       borderBottomColor: '#C5C5C5'
-//     }
-//   }
-// });
 
-const AppContainer = createAppContainer(DrawerNavigator);
+const AppContainer = createAppContainer(StackNavigator);
 
 export default AppContainer;

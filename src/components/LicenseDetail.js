@@ -20,7 +20,8 @@ const LicenseDetail = props => {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 15,
+        paddingLeft: 10,
+        paddingTop: 10,
         backgroundColor: '#E5C4C4'
     },
     avatar: {
@@ -29,7 +30,8 @@ const styles = StyleSheet.create({
     },
     detailContainer: {
         backgroundColor: '#E13232',
-        marginTop: 20,
+        marginTop: 7,
+        marginBottom: 9,
         elevation: 1,
     }
 });
