@@ -1,9 +1,20 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, Button, ActivityIndicator, Text, Alert, Image } from 'react-native';
+import { 
+    View, 
+    TextInput,
+    StyleSheet, 
+    Button, 
+    ActivityIndicator, 
+    Text, 
+    Alert, 
+    Image
+ } from 'react-native';
 import FormRow from '../components/FormRow';
 import firebase from 'firebase';
+import { processLogin } from '../actions';
+import { connect } from 'react-redux';
 
-export default class Login extends React.Component{
+class Login extends React.Component{
 
     constructor(props) {
         super(props);
@@ -12,7 +23,7 @@ export default class Login extends React.Component{
             email: "",
             password: "",
             isLoading: false,
-            message: "TESTE"
+            message: ""
         }
     }
 
@@ -40,52 +51,19 @@ export default class Login extends React.Component{
     processLogin() {
         this.setState({ isLoading: true});
         const {email, password} = this.state;
-        
-        const loginUserSuccess = parameters => {
-            this.props.navigation.navigate('DrawerApp', parameters);
-        } 
-
-        const loginUserFailed = error => {
-            console.log("Teste loginUserfailed")
-            this.setState({ message: this.getMessageByError(error.code)})
-                Alert.alert(
-                    "ERRO!" ,
-                    this.state.message
-                )
-        }
-        firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password)
-            .then(loginUserSuccess)
-            .catch(error => {
-                
-                if(error.code == "auth/user-not-found") {
-                    Alert.alert(
-                        "Usuário não encontrado",
-                        "Deseja criar um novo usuário?",
-                        [{
-                            text: 'Não',
-                            onPress: () => {
-                                console.log('Usuario não quis criar conta')
-                            }
-                        }, {
-                            text: 'Sim',
-                            onPress: () => {
-                                firebase
-                                    .auth()
-                                    .createUserWithEmailAndPassword(email, password)
-                                    .then(loginUserSuccess)
-                                    .catch(loginUserFailed)
-                            }
-                        }],
-                        { cancelable: true }
-                    );
+        this.props.processLogin({email, password})
+            .then( user => {
+                if(user) {
+                    this.props.navigation.replace('DrawerApp');
+                } else {
+                    this.setState({isLoading: false});
                 }
-                loginUserFailed(error)
                 
             })
-            .then( () => {
-                this.setState({ isLoading: false});
+            .catch( error => {
+                this.setState({message: error.code});
+                this.setState({isLoading: false});
+                Alert.alert("ERRO", this.getMessageByError(this.state.message));
             })
     }
 
@@ -135,6 +113,8 @@ export default class Login extends React.Component{
                             onChangeText={valor => {
                                 this.onChangeHandler('email', valor)
                             }}
+                            keyboardType="email-address"
+                            autoCapitalize="none"
                         />
                     </FormRow>
                     <FormRow>
@@ -175,4 +155,6 @@ const styles = StyleSheet.create({
         width: 200,
         marginLeft: 100,
     }
-})
+});
+
+export default connect(null, {processLogin})(Login)

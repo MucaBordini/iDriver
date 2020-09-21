@@ -13,7 +13,7 @@ const DrawerNavigator = createDrawerNavigator({
   },
   'Carteira de iDriver': {
     screen: StackLicense
-  },
+  }
 } , {
   drawerBackgroundColor: '#E13232',
   contentOptions: {

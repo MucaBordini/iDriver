@@ -5,10 +5,14 @@ import MenuButton from '../components/MenuButton';
 import React from 'react';
 import { StyleSheet, Image, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import LapDetail from '../screens/LapDetail';
 
 const StackNavigator = createStackNavigator({
   'Minhas Voltas/Trajetos': {
     screen: LapsPage
+  },
+  'LapDetail': {
+    screen: LapDetail
   },
   'LapRegister': {
     screen: LapRegister
