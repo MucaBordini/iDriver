@@ -14,6 +14,7 @@ const LapCard = ({ volta, isLeft, onNavigate }) => (
         style={[styles.container, isLeft ? styles.leftColumn : styles.rightColumn]}>
         <View style={styles.card}>
             <Image 
+                style={styles.image}
                 source={
                     {
                         uri: volta.img
@@ -39,8 +40,10 @@ const styles = StyleSheet.create({
     card: {
         flex: 1,
         borderWidth: 1,
+        borderRadius: 10
     },
     cardTitleContainer: {
+        borderRadius:10,
         backgroundColor: '#E13232',
         opacity: 0.8,
         width: '100%',
@@ -57,6 +60,9 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 15,
         fontWeight: 'bold'
+    },
+    image: {
+        borderRadius: 10
     },
     leftColumn: {
         paddingLeft: 10

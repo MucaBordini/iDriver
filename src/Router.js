@@ -3,9 +3,9 @@ import Login from './screens/Login';
 import DrawerApp from './navigation/DrawerApp';
 
 const StackNavigator = createStackNavigator({
-  // 'Login': {
-  //   screen: Login
-  // },
+  'Login': {
+    screen: Login
+  },
   'DrawerApp': {
     screen: DrawerApp ,
     navigationOptions: {
