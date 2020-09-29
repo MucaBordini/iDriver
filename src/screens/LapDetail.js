@@ -3,7 +3,8 @@ import {
     View,
     ScrollView, 
     Image, 
-    StyleSheet 
+    StyleSheet,
+    Button 
 } from 'react-native';
 import Line from '../components/Line';
 
@@ -23,6 +24,10 @@ export default class LapDetail extends React.Component {
                     <Line label='Nome do circuito: ' content={volta.circuit}/>
                     <Line label='Tempo de volta: ' content={volta.laptime}/>
                     <Line label='Data: ' content={volta.date}/>
+                    <Button title="Editar" onPress={ () => {
+                        this.props.navigation.replace('LapRegister', {voltaToEdit: volta});
+                    }}
+                    />
                 </View>
             </ScrollView>
         );
