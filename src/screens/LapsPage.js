@@ -15,7 +15,11 @@ class LapsPage extends React.Component {
 
     render(){
         if(this.props.voltas === null) {
-            return <ActivityIndicator />
+            return (<View>
+                <ActivityIndicator />
+                <AddButton onNavigate={() => this.props.navigation.navigate('LapRegister')}/>
+                </View>)
+            
         }
          return (
             <View>

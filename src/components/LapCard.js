@@ -17,7 +17,7 @@ const LapCard = ({ volta, isLeft, onNavigate }) => (
                 style={styles.image}
                 source={
                     {
-                        uri: volta.img
+                        uri: `data:image/jpeg;base64,${volta.img}`
                     }
                 }
                 aspectRatio={1}

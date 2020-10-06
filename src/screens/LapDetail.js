@@ -7,16 +7,17 @@ import {
     Button 
 } from 'react-native';
 import Line from '../components/Line';
+import { connect } from 'react-redux';
+import { deleteLap } from '../actions';
 
-export default class LapDetail extends React.Component {
+class LapDetail extends React.Component {
     render(){
         const { volta } = this.props.navigation.state.params;
-        const picUrl = volta.img
         return(
             <ScrollView>
                 <Image
                     source={{
-                        uri: picUrl
+                        uri: `data:image/jpeg;base64,${volta.img}`
                     }}
                     style={styles.image}
                 />
@@ -24,8 +25,19 @@ export default class LapDetail extends React.Component {
                     <Line label='Nome do circuito: ' content={volta.circuit}/>
                     <Line label='Tempo de volta: ' content={volta.laptime}/>
                     <Line label='Data: ' content={volta.date}/>
-                    <Button title="Editar" onPress={ () => {
-                        this.props.navigation.replace('LapRegister', {voltaToEdit: volta});
+                </View>
+                <View style={styles.button}>
+                        <Button title="Editar" onPress={ () => {
+                            this.props.navigation.replace('LapRegister', {voltaToEdit: volta});
+                        }}
+                    />
+                </View>
+                <View style={styles.button}>
+                    <Button title="Excluir" color="red" onPress={ async () => {
+                        const hasDeleted = await this.props.deleteLap(volta)
+                        if (hasDeleted) {
+                            this.props.navigation.goBack();
+                        }
                     }}
                     />
                 </View>
@@ -43,5 +55,10 @@ const styles = StyleSheet.create({
         marginTop: 20,
         elevation: 1,
         marginBottom: 20
+    },
+    button: {
+        margin: 10
     }
 })
+
+export default connect(null, {deleteLap})(LapDetail);
